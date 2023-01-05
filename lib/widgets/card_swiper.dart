@@ -17,13 +17,13 @@ class CardSwiper extends StatelessWidget {
         //Card Swiper
         width: double
             .infinity, //Que tome todo el ancho posible basado en el padre.
-        height: size.height * 0.55, //Tomo la mitad de la pantalla 0.5 50%.
+        height: size.height * 0.52, //Tomo la mitad de la pantalla 0.5 50%.
         child: Swiper(
           //Utilizo el Swiper. itemCount, Cantidad que quiero manejar
           itemCount: movies.length,
           layout: SwiperLayout.STACK, // layout
           itemWidth: size.width * 0.52,
-          itemHeight: size.height * 0.41,
+          itemHeight: size.height * 0.40,
           itemBuilder: (_, int index) {
             //Builder algo que se va contruir de manera dinamica
 
