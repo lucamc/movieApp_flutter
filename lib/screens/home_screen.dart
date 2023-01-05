@@ -17,19 +17,34 @@ class HomeScreen extends StatelessWidget {
 
     return Scaffold(
         appBar: AppBar(
-          title: const Text(
+          title: Text(
             'Movies',
-            style: TextStyle(fontSize: 28, fontFamily: 'Lato'),
+            style: TextStyle(
+                fontSize: 32,
+                fontFamily: 'Lato',
+                color: Colors.orange.shade700,
+                letterSpacing: 5),
           ),
+          backgroundColor: Colors.transparent,
+          flexibleSpace: Container(
+              decoration: const BoxDecoration(
+                  gradient: LinearGradient(
+            colors: [Color(0xe3171717), Color(0xeb2e2e2e)],
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+          ))),
           toolbarHeight: 64,
-          elevation: 0,
+          elevation: 8,
           actions: [
             //Icon Search
             IconButton(
                 padding: const EdgeInsets.only(right: 14.0),
-                iconSize: 28,
+                iconSize: 30,
                 onPressed: () {},
-                icon: const Icon(Icons.search_outlined))
+                icon: Icon(
+                  Icons.search_outlined,
+                  color: Colors.orange.shade700,
+                ))
           ],
         ),
         body: SingleChildScrollView(

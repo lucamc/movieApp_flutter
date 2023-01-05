@@ -22,8 +22,8 @@ class CardSwiper extends StatelessWidget {
           //Utilizo el Swiper. itemCount, Cantidad que quiero manejar
           itemCount: movies.length,
           layout: SwiperLayout.STACK, // layout
-          itemWidth: size.width * 0.58,
-          itemHeight: size.height * 0.44,
+          itemWidth: size.width * 0.52,
+          itemHeight: size.height * 0.41,
           itemBuilder: (_, int index) {
             //Builder algo que se va contruir de manera dinamica
 

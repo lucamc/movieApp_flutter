@@ -44,12 +44,11 @@ class _CustomAppBar extends StatelessWidget {
           color: Colors.black12,
           width: double.infinity,
           alignment: Alignment.bottomCenter,
-          padding: EdgeInsets.only(bottom: 10),
+          padding: EdgeInsets.only(bottom: 20),
           child: const Text(
             'Movie-Title',
-            style: TextStyle(
-              fontSize: 16,
-            ),
+            style:
+                TextStyle(fontSize: 18, fontFamily: 'Lato', letterSpacing: 1),
           ),
         ),
         background: FadeInImage(

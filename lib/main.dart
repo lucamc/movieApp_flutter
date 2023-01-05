@@ -1,6 +1,10 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+
 import 'package:movie_app/providers/movies_provider.dart';
+import 'package:movie_app/providers/my_https_override.dart';
 import 'package:provider/provider.dart';
 import 'screens/screens.dart';
 
@@ -8,6 +12,8 @@ void main() {
   SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
       statusBarColor: Colors.transparent,
       statusBarBrightness: Brightness.light));
+
+  HttpOverrides.global = MyHttpOverrides();
 
   runApp(AppState());
 }
@@ -41,7 +47,7 @@ class MyApp extends StatelessWidget {
         'details': (_) => const DetailsScreen(),
       },
       theme: ThemeData.dark().copyWith(
-          appBarTheme: AppBarTheme(color: Colors.indigoAccent.shade400)),
+          appBarTheme: AppBarTheme(color: Colors.orangeAccent.shade700)),
     );
   }
 }

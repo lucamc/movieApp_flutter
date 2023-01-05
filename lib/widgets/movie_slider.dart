@@ -9,12 +9,15 @@ class MovieSilder extends StatelessWidget {
       width: double.infinity,
       height: 220.0,
       child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-        const Padding(
+        Padding(
           padding: EdgeInsets.symmetric(horizontal: 20),
           child: Text(
             "More Views",
             style: TextStyle(
-                fontSize: 20, fontFamily: 'Lato', color: Colors.white),
+                fontSize: 20,
+                fontFamily: 'Lato',
+                color: Colors.orange.shade500,
+                letterSpacing: 3),
           ),
         ),
 
@@ -22,7 +25,7 @@ class MovieSilder extends StatelessWidget {
         Expanded(
           child: ListView.builder(
               scrollDirection: Axis.horizontal, //Scroll horizontal
-              itemCount: 20,
+              itemCount: 25,
               itemBuilder: (_, int index) {
                 return _MoviePoster();
               }),
