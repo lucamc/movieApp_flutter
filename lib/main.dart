@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:movie_app/providers/movies_provider.dart';
+import 'package:provider/provider.dart';
 import 'screens/screens.dart';
 
 void main() {
@@ -7,12 +9,26 @@ void main() {
       statusBarColor: Colors.transparent,
       statusBarBrightness: Brightness.light));
 
-  runApp(const MyApp());
+  runApp(AppState());
+}
+
+class AppState extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MultiProvider(
+      //En caso que necesitemos mas de un provider.
+      providers: [
+        ChangeNotifierProvider(
+          create: (_) => MovieProvider(),
+          lazy: false,
+        ),
+      ],
+      child: MyApp(),
+    );
+  }
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
