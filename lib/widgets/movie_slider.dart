@@ -84,8 +84,8 @@ class _MoviePoster extends StatelessWidget {
       child: Column(children: [
         //Imagenes de peliculas del MovieSolder. GestureDetector me permite implementar el onTap
         GestureDetector(
-          onTap: () => Navigator.pushNamed(context, 'details',
-              arguments: 'movie-instance'),
+          onTap: () =>
+              Navigator.pushNamed(context, 'details', arguments: movie),
           child: ClipRRect(
             borderRadius: BorderRadius.circular(8),
             child: FadeInImage(

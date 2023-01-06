@@ -34,7 +34,7 @@ class CardSwiper extends StatelessWidget {
               //Me va permitir ponerle en onTap, cuando alguien haga tap, realizo una nvegacion a otra pantalla.
               onTap: () => Navigator.pushNamed(context, 'details',
                   arguments:
-                      'movie-instance'), //Con navigator pushNamed me permite navegar a otra pantalla.
+                      movie), //Con navigator pushNamed me permite navegar a otra pantalla.
               child: ClipRRect(
                 //ClipRRect para agregarle Borde
                 borderRadius: BorderRadius.circular(18), //redondear los bordes
