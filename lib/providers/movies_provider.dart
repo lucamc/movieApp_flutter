@@ -14,8 +14,14 @@ class MovieProvider extends ChangeNotifier {
   String _baseUrl = 'api.themoviedb.org';
   String _language = 'en-US';
 
+  //CardSwiper Movies
   List<Movie> onDisplayMovies = [];
+
+  //Movie Slider popular Movies
   List<Movie> onDisplayPopularMovies = [];
+
+  //CreditsCards
+  Map<int, List<Cast>> moviesCast = {};
 
   int _popularPage = 0;
 
@@ -34,6 +40,7 @@ class MovieProvider extends ChangeNotifier {
     return response.body;
   }
 
+  //get Movies Home
   getOnDisplayMovies() async {
     _popularPage++;
 
@@ -47,6 +54,7 @@ class MovieProvider extends ChangeNotifier {
     notifyListeners();
   }
 
+  //get Popular Movies
   getPopularMovies() async {
     final jsonData = await this._getJsonData('3/movie/popular', 1);
 
@@ -60,5 +68,15 @@ class MovieProvider extends ChangeNotifier {
 
     //Notifica a los widgets
     notifyListeners();
+  }
+
+  Future<List<Cast>> getMoviesCast(int movieId) async {
+    if (moviesCast.containsKey(movieId)) return moviesCast[movieId]!;
+    print('info de los actores');
+
+    final jsonData = await this._getJsonData('3/movie/$movieId/credits');
+    final creditsResponse = CreditsResponse.fromJson(jsonData);
+
+    return moviesCast[movieId] = creditsResponse.cast;
   }
 }

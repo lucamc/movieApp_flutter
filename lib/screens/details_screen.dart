@@ -25,7 +25,7 @@ class DetailsScreen extends StatelessWidget {
           _Overview(movie),
           _Overview(movie),
           _Overview(movie),
-          const CastingCards()
+          CastingCards(movie.id)
         ]))
       ],
     ));
@@ -91,7 +91,7 @@ class _PosterAndTitle extends StatelessWidget {
             child: FadeInImage(
               placeholder: AssetImage('assets/img/no-image.jpg'),
               image: NetworkImage(movie.fullPosterImg),
-              height: 150,
+              height: 160,
             ),
           ),
           SizedBox(
@@ -99,7 +99,7 @@ class _PosterAndTitle extends StatelessWidget {
             width: 10,
           ),
           ConstrainedBox(
-            constraints: BoxConstraints(maxWidth: size.width - 150),
+            constraints: BoxConstraints(maxWidth: size.width - 160),
             child: Column(
               mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.start,
