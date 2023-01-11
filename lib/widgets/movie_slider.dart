@@ -80,7 +80,7 @@ class _MoviePoster extends StatelessWidget {
     return Container(
       width: 124,
       height: 180,
-      margin: const EdgeInsets.symmetric(horizontal: 2, vertical: 10),
+      margin: const EdgeInsets.symmetric(horizontal: 2, vertical: 8),
       child: Column(children: [
         //Imagenes de peliculas del MovieSolder. GestureDetector me permite implementar el onTap
         GestureDetector(

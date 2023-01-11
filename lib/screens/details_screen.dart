@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:movie_app/models/models.dart';
 import 'package:movie_app/widgets/widgets.dart';
@@ -22,8 +24,6 @@ class DetailsScreen extends StatelessWidget {
             //Lista de Slivers.
             delegate: SliverChildListDelegate([
           _PosterAndTitle(movie),
-          _Overview(movie),
-          _Overview(movie),
           _Overview(movie),
           CastingCards(movie.id)
         ]))
@@ -50,13 +50,6 @@ class _CustomAppBar extends StatelessWidget {
         title: Container(
           color: Colors.black12,
           width: double.infinity,
-          alignment: Alignment.bottomCenter,
-          padding: EdgeInsets.only(bottom: 14, left: 10, right: 10),
-          child: Text(
-            movie.title,
-            style:
-                TextStyle(fontSize: 18, fontFamily: 'Lato', letterSpacing: 1),
-          ),
         ),
         background: FadeInImage(
           placeholder: AssetImage('assets/img/loading.gif'),
@@ -81,38 +74,41 @@ class _PosterAndTitle extends StatelessWidget {
 
     return Container(
       margin: const EdgeInsets.only(
-        top: 20,
+        top: 24,
       ),
-      padding: const EdgeInsets.symmetric(horizontal: 20),
+      padding: const EdgeInsets.symmetric(horizontal: 18),
       child: Row(
         children: [
           ClipRRect(
-            borderRadius: BorderRadius.circular(20),
+            borderRadius: BorderRadius.circular(12),
             child: FadeInImage(
               placeholder: AssetImage('assets/img/no-image.jpg'),
               image: NetworkImage(movie.fullPosterImg),
-              height: 160,
+              height: 180,
             ),
           ),
           SizedBox(
             //Separacion
-            width: 10,
+            width: 16,
           ),
           ConstrainedBox(
-            constraints: BoxConstraints(maxWidth: size.width - 160),
+            constraints: BoxConstraints(maxWidth: size.width - 190),
             child: Column(
               mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
                   movie.title,
-                  style: textTheme.headline5,
+                  style: TextStyle(
+                      color: Colors.orangeAccent,
+                      fontSize: 28,
+                      fontFamily: "Lato"),
                   overflow: TextOverflow.ellipsis,
                   maxLines: 2,
                 ),
                 SizedBox(
                   //Separacion
-                  height: 10,
+                  height: 12,
                 ),
                 Text(
                   movie.originalTitle,
@@ -122,19 +118,19 @@ class _PosterAndTitle extends StatelessWidget {
                 ),
                 SizedBox(
                   //Separacion
-                  height: 5,
+                  height: 8,
                 ),
                 Row(
                   children: [
                     Icon(
                       Icons.star_outline,
-                      size: 16,
+                      size: 28,
                       color: Colors.amber[300],
                     ),
                     const SizedBox(width: 6),
                     Text(
                       '${movie.voteAverage}',
-                      style: textTheme.caption,
+                      style: textTheme.headline6,
                     )
                   ],
                 )
@@ -155,11 +151,11 @@ class _Overview extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.symmetric(horizontal: 28, vertical: 14),
+      margin: EdgeInsets.symmetric(horizontal: 32, vertical: 32),
       child: Text(
         movie.overview,
         textAlign: TextAlign.justify,
-        style: Theme.of(context).textTheme.subtitle1,
+        style: Theme.of(context).textTheme.titleMedium,
       ),
     );
   }

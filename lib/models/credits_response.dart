@@ -56,9 +56,9 @@ class Cast {
 
   get fullProfileImg {
     if (this.profilePath != null) {
-      return 'https://image.tmdb.org/t/p/w500${this.profilePath}';
+      return 'https://image.tmdb.org/t/p/w500${profilePath}';
     }
-    return 'https://austudy.com.au/wp-content/uploads/2017/10/nofoto.jpg';
+    return 'https://i.stack.imgur.com/GNhxO.png';
   }
 
   factory Cast.fromJson(String str) => Cast.fromMap(json.decode(str));

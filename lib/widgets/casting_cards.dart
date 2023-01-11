@@ -20,22 +20,37 @@ class CastingCards extends StatelessWidget {
             return Container(
               constraints: BoxConstraints(maxWidth: 120),
               height: 180,
-              child: CircularProgressIndicator(),
+              child: CircularProgressIndicator(
+                color: Colors.orangeAccent,
+              ),
             );
           }
 
           final cast = snapshot.data!;
 
-          return Container(
-            margin: EdgeInsets.only(bottom: 30),
-            width: double.infinity,
-            height: 160,
-            child: ListView.builder(
-                scrollDirection: Axis.horizontal,
-                itemCount: 10,
-                itemBuilder: (_, int index) {
-                  return _CastCards(cast[index]);
-                }),
+          return Column(
+            children: [
+              const Text(
+                "Actors",
+                style: TextStyle(
+                    fontSize: 18,
+                    fontFamily: "Lato",
+                    color: Colors.orangeAccent,
+                    letterSpacing: 2),
+              ),
+              SizedBox(height: 14),
+              Container(
+                margin: EdgeInsets.only(bottom: 20),
+                width: double.infinity,
+                height: 200,
+                child: ListView.builder(
+                    scrollDirection: Axis.horizontal,
+                    itemCount: 6,
+                    itemBuilder: (_, int index) {
+                      return _CastCards(cast[index]);
+                    }),
+              ),
+            ],
           );
         });
   }
@@ -55,10 +70,11 @@ class _CastCards extends StatelessWidget {
       child: Column(
         children: [
           //Imagen de actores
+
           ClipRRect(
             borderRadius: BorderRadius.circular(20),
             child: FadeInImage(
-              placeholder: AssetImage('assets/img/loading.gif'),
+              placeholder: AssetImage('assets/img/no-image.jpg'),
               image: NetworkImage(actor.fullProfileImg),
               fit: BoxFit.cover,
             ),

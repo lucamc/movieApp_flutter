@@ -18,12 +18,12 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
         appBar: AppBar(
           title: Text(
-            'Movies',
+            'MOVIES',
             style: TextStyle(
-                fontSize: 32,
+                fontSize: 24,
                 fontFamily: 'Lato',
                 color: Colors.orange.shade700,
-                letterSpacing: 5),
+                letterSpacing: 3),
           ),
           backgroundColor: Colors.transparent,
           flexibleSpace: Container(
