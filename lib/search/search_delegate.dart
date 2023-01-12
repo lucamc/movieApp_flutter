@@ -90,11 +90,15 @@ class _MovieItem extends StatelessWidget {
     return ListTile(
       leading: FadeInImage(
         placeholder: AssetImage('assets/img/no-image.jpg'),
-        image: NetworkImage(movie.fullPosterImg),
-        width: 60,
-        fit: BoxFit.contain,
+        image: NetworkImage(movie.fullbackdropPath),
+        width: 144,
+        height: 90,
+        fit: BoxFit.fitWidth,
       ),
-      title: Text(movie.title),
+      title: Text(
+        movie.title,
+        style: TextStyle(color: Colors.orangeAccent),
+      ),
       subtitle: Text(movie.originalTitle),
       onTap: () {
         Navigator.pushNamed(context, 'details', arguments: movie);
