@@ -44,7 +44,7 @@ class _MovieSilderState extends State<MovieSilder> {
         Padding(
           padding: EdgeInsets.only(left: 20, bottom: 2),
           child: Text(
-            "More Popular",
+            "Popular",
             style: TextStyle(
                 fontSize: 20,
                 fontFamily: 'Lato',
@@ -59,9 +59,9 @@ class _MovieSilderState extends State<MovieSilder> {
               controller: scrollController,
               scrollDirection: Axis.horizontal, //Scroll horizontal
               itemCount: widget.movies.length,
-              itemBuilder: (_, int index) {
-                return _MoviePoster(movie: widget.movies[index]);
-              }),
+              itemBuilder: (_, int index) => _MoviePoster(
+                    widget.movies[index],
+                  )),
         )
       ]),
     );
@@ -73,10 +73,12 @@ class _MovieSilderState extends State<MovieSilder> {
 class _MoviePoster extends StatelessWidget {
   final Movie movie;
 
-  const _MoviePoster({super.key, required this.movie});
+  const _MoviePoster(this.movie);
 
   @override
   Widget build(BuildContext context) {
+    movie.heroId = 'slider-${movie.id}';
+
     return Container(
       width: 124,
       height: 180,
@@ -86,14 +88,17 @@ class _MoviePoster extends StatelessWidget {
         GestureDetector(
           onTap: () =>
               Navigator.pushNamed(context, 'details', arguments: movie),
-          child: ClipRRect(
-            borderRadius: BorderRadius.circular(8),
-            child: FadeInImage(
-              placeholder: AssetImage('assets/img/no-image.jpg'),
-              image: NetworkImage(movie.fullPosterImg),
-              width: 100,
-              height: 138,
-              fit: BoxFit.cover,
+          child: Hero(
+            tag: movie.heroId!,
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(8),
+              child: FadeInImage(
+                placeholder: AssetImage('assets/img/no-image.jpg'),
+                image: NetworkImage(movie.fullPosterImg),
+                width: 100,
+                height: 138,
+                fit: BoxFit.cover,
+              ),
             ),
           ),
         ),

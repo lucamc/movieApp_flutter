@@ -62,9 +62,10 @@ class MovieSearchDelegate extends SearchDelegate {
     }
 
     final moviesProvider = Provider.of<MovieProvider>(context, listen: false);
+    moviesProvider.getSugegstionByQuery(query);
 
-    return FutureBuilder(
-      future: moviesProvider.searchMovies(query),
+    return StreamBuilder(
+      stream: moviesProvider.suggestionStream,
       builder: (_, AsyncSnapshot<List<Movie>> snapshot) {
         if (!snapshot.hasData) {
           return _emptyContainer();
@@ -87,13 +88,18 @@ class _MovieItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    movie.heroId = 'search-${movie.id}';
+
     return ListTile(
-      leading: FadeInImage(
-        placeholder: AssetImage('assets/img/no-image.jpg'),
-        image: NetworkImage(movie.fullbackdropPath),
-        width: 144,
-        height: 90,
-        fit: BoxFit.fitWidth,
+      leading: Hero(
+        tag: movie.id,
+        child: FadeInImage(
+          placeholder: AssetImage('assets/img/no-image.jpg'),
+          image: NetworkImage(movie.fullbackdropPath),
+          width: 144,
+          height: 90,
+          fit: BoxFit.fitWidth,
+        ),
       ),
       title: Text(
         movie.title,

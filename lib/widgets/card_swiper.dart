@@ -28,22 +28,26 @@ class CardSwiper extends StatelessWidget {
             //Builder algo que se va contruir de manera dinamica
 
             final movie = movies[index];
-            print(movie.fullPosterImg);
+            movie.heroId = "swiper-${movie.id}";
 
             return GestureDetector(
               //Me va permitir ponerle en onTap, cuando alguien haga tap, realizo una nvegacion a otra pantalla.
               onTap: () => Navigator.pushNamed(context, 'details',
                   arguments:
                       movie), //Con navigator pushNamed me permite navegar a otra pantalla.
-              child: ClipRRect(
-                //ClipRRect para agregarle Borde
-                borderRadius: BorderRadius.circular(18), //redondear los bordes
-                child: FadeInImage(
-                  placeholder:
-                      AssetImage('assets/img/no-image.jpg'), //Imagen en memoria
-                  image: NetworkImage(movie.fullPosterImg),
-                  fit: BoxFit
-                      .cover, // fit, para adaptar la imagen al contenedor padre.
+              child: Hero(
+                tag: movie.id,
+                child: ClipRRect(
+                  //ClipRRect para agregarle Borde
+                  borderRadius:
+                      BorderRadius.circular(18), //redondear los bordes
+                  child: FadeInImage(
+                    placeholder: AssetImage(
+                        'assets/img/no-image.jpg'), //Imagen en memoria
+                    image: NetworkImage(movie.fullPosterImg),
+                    fit: BoxFit
+                        .cover, // fit, para adaptar la imagen al contenedor padre.
+                  ),
                 ),
               ),
             );
